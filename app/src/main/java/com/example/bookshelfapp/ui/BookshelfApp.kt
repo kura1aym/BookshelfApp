@@ -11,9 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.amphibians.R
+import com.example.bookshelfapp.R
 import com.example.bookshelfapp.ui.screens.BookshelfViewModel
 import com.example.bookshelfapp.ui.screens.HomeScreen
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

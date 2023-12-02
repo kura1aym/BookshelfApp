@@ -28,7 +28,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.amphibians.R
+import com.example.bookshelfapp.R
+
 import com.example.bookshelfapp.model.Book
 
 

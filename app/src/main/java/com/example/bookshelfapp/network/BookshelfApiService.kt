@@ -8,9 +8,9 @@ import retrofit2.http.Query
 
 interface BookshelfApiService {
 
-    @GET("v1/volumes")
+    @GET("volumes")
     suspend fun searchBooks(@Query("q") query: String): BooksResponse
 
-    @GET("v1/volumes/{id}")
+    @GET("volumes/{id}")
     suspend fun getBookDetails(@Path("id") bookId: String): BookDetailsResponse
 }
