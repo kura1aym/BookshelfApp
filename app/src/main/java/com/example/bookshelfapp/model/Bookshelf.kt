@@ -32,6 +32,7 @@ data class BookItem(
 
 data class VolumeInfo(
     val title: String,
+    val author: String,
     val imageLinks: ImageLinks
 )
 
