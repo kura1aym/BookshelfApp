@@ -17,6 +17,7 @@ class BookshelfRepository(private val googleBooksService: BookshelfApiService) {
         return response.items.map { it.toBook() }
     }
 
+
     suspend fun getBookDetails(bookId: String): Book {
         val response = googleBooksService.getBookDetails(bookId)
         return response.volumeInfo.toBook(bookId)

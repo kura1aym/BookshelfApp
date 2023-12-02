@@ -7,10 +7,10 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface BookshelfApiService {
-
     @GET("volumes")
     suspend fun searchBooks(@Query("q") query: String): BooksResponse
 
     @GET("volumes/{id}")
     suspend fun getBookDetails(@Path("id") bookId: String): BookDetailsResponse
 }
+

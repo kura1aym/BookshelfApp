@@ -37,8 +37,10 @@ class BookshelfViewModel(private val bookshelfRepository: BookshelfRepository) :
             bookshelfUiState = try {
                 BookshelfUiState.Success(bookshelfRepository.getBooks(query))
             } catch (e: IOException) {
+                e.printStackTrace()
                 BookshelfUiState.Error
             } catch (e: HttpException) {
+                e.printStackTrace()
                 BookshelfUiState.Error
             }
         }
@@ -53,8 +55,10 @@ class BookshelfViewModel(private val bookshelfRepository: BookshelfRepository) :
                 val books = bookshelfRepository.searchBooks(query)
                 BookshelfUiState.Success(books)
             } catch (e: IOException) {
+                e.printStackTrace()
                 BookshelfUiState.Error
             } catch (e: HttpException) {
+                e.printStackTrace()
                 BookshelfUiState.Error
             }
         }
