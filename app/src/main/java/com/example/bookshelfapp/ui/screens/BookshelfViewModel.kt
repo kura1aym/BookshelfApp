@@ -4,7 +4,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.bookshelfapp.BookshelfApplication
 import com.example.bookshelfapp.data.BookshelfRepository
 import com.example.bookshelfapp.model.Book
 import kotlinx.coroutines.launch
@@ -55,5 +59,18 @@ class BookshelfViewModel(private val bookshelfRepository: BookshelfRepository) :
             }
         }
     }
+
+    companion object {
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                val application = (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY]
+                        as BookshelfApplication)
+                val bookshelfRepository = application.container.bookshelfRepository
+                BookshelfViewModel(bookshelfRepository = bookshelfRepository)
+            }
+        }
+    }
+
+
 }
 

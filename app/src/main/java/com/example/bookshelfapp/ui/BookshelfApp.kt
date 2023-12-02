@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.amphibians.R
-//import com.example.bookshelfapp.ui.screens.BookshelfViewModel
+import com.example.bookshelfapp.ui.screens.BookshelfViewModel
 import com.example.bookshelfapp.ui.screens.HomeScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,11 +35,12 @@ fun BookshelfApp() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-//            val bookshelfViewModel: BookshelfViewModel =
-//                viewModel(factory = BookshelfViewModel.Factory)
+            val bookshelfViewModel: BookshelfViewModel = viewModel(factory = BookshelfViewModel.Factory)
             HomeScreen(
+                bookshelfUiState = bookshelfViewModel.bookshelfUiState,
+                retryAction = { bookshelfViewModel.getBooks("") },
                 modifier = Modifier.fillMaxSize(),
-                contentPadding = it
+                contentPadding = it,
             )
         }
     }
