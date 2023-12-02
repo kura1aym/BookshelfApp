@@ -88,7 +88,7 @@ fun BookCard(book: Book, modifier: Modifier = Modifier) {
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                text = stringResource(R.string.book_title, book.title, book.author),
+                text = stringResource(R.string.book_title, book.title, book.authors),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(dimensionResource(R.dimen.padding_medium)),

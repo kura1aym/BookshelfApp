@@ -7,14 +7,14 @@ import kotlinx.serialization.Serializable
 data class Book(
     val id: String,
     val title: String,
-    val author: String,
+    val authors: List<String>,
     val description: String,
     @SerialName("imageLinks") val imageLinks: ImageLinks
 )
 
 @Serializable
 data class ImageLinks(
-    val smallThumbnail: String,
+    @SerialName("smallThumbnail") val smallThumbnail: String,
     val thumbnail: String,
     val small: String,
     val medium: String,
@@ -22,22 +22,26 @@ data class ImageLinks(
     @SerialName("extraLarge") val extraLarge: String
 )
 
+@Serializable
 data class BooksResponse(
     val items: List<BookItem>
 )
 
+@Serializable
 data class BookItem(
     val id: String,
-    val volumeInfo: VolumeInfo
+    @SerialName("volumeInfo") val volumeInfo: VolumeInfo
 )
 
+@Serializable
 data class VolumeInfo(
     val title: String,
-    val author: String,
+    val authors: List<String>,
     val description: String,
-    val imageLinks: ImageLinks
+    @SerialName("imageLinks") val imageLinks: ImageLinks
 )
 
+@Serializable
 data class BookDetailsResponse(
-    val volumeInfo: VolumeInfo
+    @SerialName("volumeInfo") val volumeInfo: VolumeInfo
 )

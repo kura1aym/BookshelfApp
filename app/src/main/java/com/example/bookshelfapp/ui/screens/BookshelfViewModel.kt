@@ -29,6 +29,7 @@ class BookshelfViewModel(private val bookshelfRepository: BookshelfRepository) :
     init {
         getBooks("")
         searchBooks("")
+        getBookDetails("")
     }
 
     fun getBooks(query: String) {
@@ -60,6 +61,22 @@ class BookshelfViewModel(private val bookshelfRepository: BookshelfRepository) :
             } catch (e: HttpException) {
                 e.printStackTrace()
                 BookshelfUiState.Error
+            }
+        }
+    }
+
+    fun getBookDetails(bookId: String) {
+        viewModelScope.launch {
+            bookshelfUiState = BookshelfUiState.Loading
+            try {
+                val bookDetails = bookshelfRepository.getBookDetails(bookId)
+                bookshelfUiState = BookshelfUiState.Success(listOf(bookDetails))
+            } catch (e: IOException) {
+                e.printStackTrace()
+                bookshelfUiState = BookshelfUiState.Error
+            } catch (e: HttpException) {
+                e.printStackTrace()
+                bookshelfUiState = BookshelfUiState.Error
             }
         }
     }

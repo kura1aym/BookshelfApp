@@ -24,10 +24,10 @@ class BookshelfRepository(private val googleBooksService: BookshelfApiService) {
     }
 
     private fun BookItem.toBook(): Book {
-        return Book(id, volumeInfo.title, volumeInfo.author, volumeInfo.description, volumeInfo.imageLinks)
+        return Book(id, volumeInfo.title, volumeInfo.authors, volumeInfo.description, volumeInfo.imageLinks)
     }
 
     private fun VolumeInfo.toBook(bookId: String): Book {
-        return Book(bookId, title, author, description, imageLinks)
+        return Book(bookId, title, authors, description, imageLinks)
     }
 }
